@@ -15,6 +15,7 @@ export default new Vuex.Store({
     midtransUrl: '',
     categories: [],
     productsByCategory:[],
+    productDetail: [],
   },
   mutations: {
     MUTATE_MIDTRANSURL(state, payload) {
@@ -43,6 +44,9 @@ export default new Vuex.Store({
     },
     MUTATE_PRODUCTSBYCATEGORY(state, payload) {
       state.productsByCategory = payload
+    },
+    MUTATE_PRODUCTDETAIL(state, payload) {
+      state.productDetail = payload
     }
   },
   actions: {
@@ -86,6 +90,17 @@ export default new Vuex.Store({
         })
         context.commit("MUTATE_PRODUCTSBYCATEGORY", response.data);
       } catch (err) {
+        console.log(err);
+      }
+    },
+    async fetchProductById(context, payload) {
+      try {
+        const response = await axios({
+          method: 'GET',
+          url: `${context.state.url}/products/${payload}`
+        })
+        context.commit("MUTATE_PRODUCTDETAIL", response.data)
+      }catch(err) {
         console.log(err);
       }
     },

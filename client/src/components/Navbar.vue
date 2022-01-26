@@ -3,7 +3,7 @@
     <div class="container mx-auto flex flex-wrap items-center">
       <div class="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
         <div class="text-white no-underline hover:text-white hover:no-underline">
-          <span  class="text-2xl pl-2 cursor-pointer">Get Market</span>
+          <span @click.prevent="toHome" class="text-2xl pl-2 cursor-pointer">Get Market</span>
         </div>
       </div>
       <div class="flex w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
@@ -60,10 +60,13 @@ export default {
     toLogin() {
       this.$router.push({name: "Login"})
     },
+    toHome() {
+      this.$router.push({name: "Home"})
+    },
     logout() {
       localStorage.clear();
       this.$store.commit("MUTATE_ISLOGGEDIN", false)
-      this.$router.push({name: "Home"})
+      this.toHome()
     },
      toCart() {
       this.$router.push({name: "Cart"})

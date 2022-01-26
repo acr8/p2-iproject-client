@@ -2,7 +2,7 @@
       <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
         <div>
           
-            <img class="hover:grow hover:shadow-lg w-80 object-fit h-80"
+            <img @click.prevent="getProductDetail(product.id)" class="hover:grow hover:shadow-lg w-80 object-fit h-80"
             :src="product.image">
          
           <div class="pt-3 flex items-center justify-between">
@@ -27,7 +27,13 @@ export default {
   methods: {
     async addToCart(id) {
       await this.$store.dispatch("postCart", id)
-    }
+    },
+      getProductDetail(id) {
+      this.$router.push(`product/${id}`);
+
+      this.$store.dispatch("fetchProductById", id);
+
+    },
   }
   
 }
