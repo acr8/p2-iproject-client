@@ -25,7 +25,7 @@
             Products
           </div>
           <div class="flex items-center" id="store-nav-content">
-            <span>
+            <!-- <span>
               <div class="relative inline-flex mx-4">
                 <svg class="w-2 h-2 absolute top-0 right-0 m-4 pointer-events-none" xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 412 232">
@@ -46,7 +46,7 @@
                 <path
                   d="M10,18c1.846,0,3.543-0.635,4.897-1.688l4.396,4.396l1.414-1.414l-4.396-4.396C17.365,13.543,18,11.846,18,10 c0-4.411-3.589-8-8-8s-8,3.589-8,8S5.589,18,10,18z M10,4c3.309,0,6,2.691,6,6s-2.691,6-6,6s-6-2.691-6-6S6.691,4,10,4z" />
               </svg>
-            </span>
+            </span> -->
           </div>
         </div>
       </nav>
