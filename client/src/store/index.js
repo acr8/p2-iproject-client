@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import Swal from 'sweetalert2'
 
 Vue.use(Vuex)
 
@@ -59,7 +60,14 @@ export default new Vuex.Store({
             access_token: localStorage.getItem("access_token"),
           },
         })
-        console.log(response.data.message);
+        // console.log(response.data.message);
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: response.data.message,
+          showConfirmButton: false,
+          timer: 1000
+        })
       } catch (err) {
         console.log(err);
       }
@@ -185,10 +193,23 @@ export default new Vuex.Store({
         localStorage.setItem("username", response.data.username);
         localStorage.setItem("email", response.data.email);
         context.commit("MUTATE_ISLOGGEDIN", true);
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Login Success',
+          showConfirmButton: false,
+          timer: 800
+        })
        
       } catch (err) {
         console.log(err);
-        
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: err.response.data.message,
+          showConfirmButton: false,
+          timer: 900
+        })
       }
     },
     async googleSignIn(context, payload) {
@@ -203,8 +224,22 @@ export default new Vuex.Store({
         localStorage.setItem("username", response.data.username);
         localStorage.setItem("email", response.data.email);
         context.commit("MUTATE_ISLOGGEDIN", true);
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Login Success',
+          showConfirmButton: false,
+          timer: 800
+        })
       } catch (err) {
         console.log(err);
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: err.response.data.message,
+          showConfirmButton: false,
+          timer: 900
+        })
       }
     },
 
@@ -222,9 +257,23 @@ export default new Vuex.Store({
           data: registerData,
         });
         context.commit("MUTATE_ISREGISTERPAGE", true)
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Register Success',
+          showConfirmButton: false,
+          timer: 800
+        })
       
       } catch (err) {
         context.commit("MUTATE_ISREGISTERPAGE", false)
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: err.response.data.message,
+          showConfirmButton: false,
+          timer: 900
+        })
       }
     },
     async clearCart(context, payload) {
