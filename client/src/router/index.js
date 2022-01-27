@@ -30,6 +30,11 @@ const routes = [
     component: () => import('../views/ProductDetailPage.vue')
   },
   {
+    path: '/productEtsy/:id',
+    name: 'ProductEtsyDetail',
+    component: () => import('../views/ProductEtsyDetail.vue')
+  },
+  {
     path: '/transaction',
     name: 'Transaction',
     component: () => import('../views/TransactionPage.vue')

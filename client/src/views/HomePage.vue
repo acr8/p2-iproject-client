@@ -112,19 +112,19 @@ export default {
     }
   },
   computed: {
-    ...mapState(["products", "productsEtsy", "categories", "productsByCategory"]),
+    ...mapState(["products", "productsEtsy" ]),
   },
   methods: {
-    ...mapActions(["fetchProducts", "fetchProductsEtsy", "fetchCategory"]),
-    getProductsByCategory() {
-      this.$store.dispatch("fetchProductsByCategory", this.category);
-    }
+    ...mapActions(["fetchProducts", "fetchProductsEtsy", ]),
+    // getProductsByCategory() {
+    //   this.$store.dispatch("fetchProductsByCategory", this.category);
+    // }
   },
   created() {
     this.fetchProducts(),
-    this.fetchProductsEtsy(),
-    this.fetchCategory(),
-    this.getProductsByCategory()
+    this.fetchProductsEtsy()
+    // this.fetchCategory(),
+    // this.getProductsByCategory()
   }
 }
 </script>
