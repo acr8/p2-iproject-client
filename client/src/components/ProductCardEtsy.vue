@@ -2,7 +2,7 @@
       <div class="w-full md:w-1/3 xl:w-1/4 p-6 flex flex-col">
         <div>
           
-            <img class="hover:grow hover:shadow-lg w-80 object-fit h-80"
+            <img @click.prevent="fetchProductEtsyById(productEtsy.listing_id)" class="hover:grow hover:shadow-lg w-80 object-fit h-80"
             :src="productEtsy.Images[0].url_570xN">
          
           <div class="pt-3 flex items-center justify-between">
@@ -22,6 +22,14 @@ export default {
    computed: {
     ...mapState(["isLoggedIn"])
   },
+  methods: {
+      fetchProductEtsyById(id) {
+      this.$router.push(`productEtsy/${id}`);
+
+      this.$store.dispatch("fetchProductEtsyById", id);
+
+    },
+  }
  
 }
 </script>

@@ -12,11 +12,12 @@ export default new Vuex.Store({
     carts: [],
     isLoggedIn: false,
     isRegisterPage: false,
-    url: "http://localhost:3000",
+    url: "https://getmarket.herokuapp.com",
     midtransUrl: '',
     categories: [],
     productsByCategory:[],
     productDetail: [],
+    productEtsyDetail: [],
   },
   mutations: {
     MUTATE_MIDTRANSURL(state, payload) {
@@ -48,6 +49,9 @@ export default new Vuex.Store({
     },
     MUTATE_PRODUCTDETAIL(state, payload) {
       state.productDetail = payload
+    },
+    MUTATE_PRODUCTETSYDETAIL(state, payload) {
+      state.productEtsyDetail = payload
     }
   },
   actions: {
@@ -108,6 +112,17 @@ export default new Vuex.Store({
           url: `${context.state.url}/products/${payload}`
         })
         context.commit("MUTATE_PRODUCTDETAIL", response.data)
+      }catch(err) {
+        console.log(err);
+      }
+    },
+    async fetchProductEtsyById(context, payload) {
+      try {
+        const response = await axios({
+          method: 'GET',
+          url: `${context.state.url}/productsEtsy/${payload}`
+        })
+        context.commit("MUTATE_PRODUCTETSYDETAIL", response.data)
       }catch(err) {
         console.log(err);
       }
