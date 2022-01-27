@@ -7,7 +7,7 @@
          
           <div class="pt-3 flex items-center justify-between">
             <p class="text-left truncate">{{productEtsy.title}}</p>
-            <i v-if="isLoggedIn" class="fas fa-shopping-cart text-gray-500 hover:text-black cursor-pointer mx-2 text-lg"></i>
+            <i  @click.prevent="addToCart(productEtsy.listing_id)" v-if="isLoggedIn" class="fas fa-shopping-cart text-gray-500 hover:text-black cursor-pointer mx-2 text-lg"></i>
           </div>
           <p class="pt-1 text-gray-900 text-left">${{productEtsy.price}}</p>
         </div>
@@ -23,6 +23,9 @@ export default {
     ...mapState(["isLoggedIn"])
   },
   methods: {
+    async addToCart(id) {
+      await this.$store.dispatch("postCart", id)
+    },
       fetchProductEtsyById(id) {
       this.$router.push(`productEtsy/${id}`);
 
