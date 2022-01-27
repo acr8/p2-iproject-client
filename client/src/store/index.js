@@ -219,7 +219,7 @@ export default new Vuex.Store({
           url: `${context.state.url}/googleSignIn`,
           data: { token: payload.getAuthResponse().id_token },
         });
-        console.log(response.data);
+        // console.log(response.data);
         localStorage.setItem("access_token", response.data.access_token);
         localStorage.setItem("username", response.data.username);
         localStorage.setItem("email", response.data.email);
