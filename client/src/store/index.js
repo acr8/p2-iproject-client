@@ -12,7 +12,7 @@ export default new Vuex.Store({
     carts: [],
     isLoggedIn: false,
     isRegisterPage: false,
-    url: "https://getmarket.herokuapp.com",
+    url: "http://localhost:3000",
     midtransUrl: '',
     categories: [],
     productsByCategory:[],
